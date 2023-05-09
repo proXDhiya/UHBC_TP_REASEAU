@@ -9,7 +9,10 @@
     </head>
     <body>
         <div class="container">
-            <h1>Chat Application</h1>
+            <div>
+                <h1>Chat Application</h1>
+                <ion-icon class="btn" name="key-outline"></ion-icon>
+            </div>
             <ul id="messages"></ul>
             <form id="form" action="">
                 <label for="key">key: </label>
@@ -22,5 +25,8 @@
         <script src="/socket.io/socket.io.js"></script>
         <script src="./js/socket.js"></script>
         <script src="./js/fetchOldMessages.js"></script>
+        <script src="./js/decryptMessage.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     </body>
 </html>

@@ -21,15 +21,37 @@ body {
     transform: translate(-50%, -50%);
     outline: 5px solid #efefef;
     background: #fff;
+    overflow: hidden;
 }
 
-.container > h1 {
+.container > div {
     text-align: center;
     padding: 1rem;
     background: #333;
     color: #fff;
     text-transform: uppercase;
     letter-spacing: 2px;
+    position: relative;
+}
+
+.container > div > ion-icon {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1rem;
+    padding: .5rem;
+    border-radius: 3px;
+    background: #fff;
+    color: #333;
+    height: 23px;
+    width: 23px;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.container > div > ion-icon:hover {
+    background: #e0e0e0;
 }
 
 #form {
@@ -97,12 +119,30 @@ input:focus {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    overflow-y: scroll;
+    height: 90%;
 }
 
 #messages > li {
-    padding: 0.5rem 1rem;
+    padding: 1rem 1rem;
+    background: #f4feff;
+    border-bottom: 1px solid #ccc;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 30px;
+    grid-gap: 5px;
 }
 
 #messages > li:nth-child(odd) {
     background: #efefef;
+}
+
+#messages > li:last-child {
+    border-bottom: none;
+    margin-bottom: 50px;
+}
+
+span {
+    color: #3b3b3b;
+    margin-left: 20px;
 }
