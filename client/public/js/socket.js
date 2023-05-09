@@ -1,13 +1,36 @@
-var socket = io();
+let socket = io();
 
-var messages = document.getElementById('messages');
-var form = document.getElementById('form');
-var input = document.getElementById('input');
+let messages = document.getElementById('messages');
+let form = document.getElementById('form');
+let input = document.getElementById('input');
+let key = document.getElementById('key');
 
-form.addEventListener('submit', function(e) {
+const encrypt = async (msg, k) => {
+    // http://localhost:3000/encrypt/ [POST]
+    let response;
+    try {
+        response = await fetch('http://localhost:8000/encrypt/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: msg,
+                key: k
+            })
+        });
+        const data = await response.json();
+        return data.message;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+form.addEventListener('submit', async function(e) {
     e.preventDefault();
-    if (input.value) {
-        socket.emit('chat message', input.value);
+    if (input.value && key.value) {
+        const encryptedMessage = await encrypt(input.value, key.value);
+        socket.emit('chat message', encryptedMessage);
         input.value = '';
     }
 });

@@ -8,11 +8,19 @@
         <title>Chat Application</title>
     </head>
     <body>
-        <ul id="messages"></ul>
-        <form id="form" action="">
-            <input id="input" autocomplete="off" /><button>Send</button>
-        </form>
+        <div class="container">
+            <h1>Chat Application</h1>
+            <ul id="messages"></ul>
+            <form id="form" action="">
+                <label for="key">key: </label>
+                <input id="key" value="s6v9y$B?E(H+MbQe" />
+                <label for="input">message: </label>
+                <input id="input" autocomplete="off" placeholder="Type your message here..." />
+                <button>Send</button>
+            </form>
+        </div>
         <script src="/socket.io/socket.io.js"></script>
         <script src="./js/socket.js"></script>
+        <script src="./js/fetchOldMessages.js"></script>
     </body>
 </html>
