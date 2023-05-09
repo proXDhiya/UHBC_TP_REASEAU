@@ -5,10 +5,7 @@ const http = require('http');
 const server = http.createServer(app);
 const { Server } = require('socket.io');
 const io = new Server(server);
-
-// JSON file
 const fs = require('fs');
-const fileDB = fs.readFileSync('./db/message.json', 'utf-8');
 
 // Configure express
 app.use(express.json());
@@ -27,6 +24,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/message', (req, res) => {
+    const fileDB = fs.readFileSync('./db/message.json', 'utf-8');
     const data = JSON.parse(fileDB);
     res.json(data);
 })

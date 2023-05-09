@@ -19,7 +19,10 @@ const decryptMessage = async (msg, k) => {
         return data.message;
     } catch (error) {
         console.log(error);
+        key.style.outline = '2px solid red';
+        alert('Wrong Key! Please try again with 128 bits.key');
     }
+    return false;
 };
 
 // wait for the DOM to finish loading and then wait 2 seconds before running the function
@@ -30,12 +33,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 2000);
 });
 
+// get the new changes every 1 second
+setInterval(() => {
+    li = document.querySelectorAll('li');
+}, 1000);
+
+// if key clicked, remove the red outline
+key.addEventListener('click', () => {
+    key.style.outline = 'none';
+});
+
 // event listener for the button
 btn.addEventListener('click', async () => {
     for (let i = 0; i < li.length; i++) {
         let encryptedMessage = li[i].children[0].children[0].textContent;
         let decryptedMessage = li[i].children[1].children[0];
         const temp = await decryptMessage(encryptedMessage, key.value);
+        if (!temp) break;
         decryptedMessage.textContent = temp;
     }
 });
